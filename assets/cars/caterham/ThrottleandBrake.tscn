@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/LeverZero.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+margin = 0.01
+extents = Vector3( 0.1, 0.15, 0.025 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.2, 0.3, 0.05 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_do_not_receive_shadows = true
+albedo_color = Color( 0.196078, 0.196078, 0.203922, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_do_not_receive_shadows = true
+albedo_color = Color( 0.196078, 0.196078, 0.203922, 1 )
+
+[node name="ThrottleandBrake" instance=ExtResource( 1 )]
+
+[node name="Frame" parent="." index="0"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape" parent="Frame" index="0"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="MeshInstance" parent="Frame" index="1"]
+visible = false
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="HingeBody" parent="HingeOrigin/InteractableHinge" index="0"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="MeshInstance" parent="HingeOrigin/InteractableHinge/HingeBody" index="3"]
+material/0 = SubResource( 4 )
+
+[node name="InteractableHandle" parent="HingeOrigin/InteractableHinge/HandleOrigin" index="0"]
+ranged_grab_method = 0
