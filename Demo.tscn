@@ -192,9 +192,7 @@ mesh = SubResource( 8 )
 multimesh = SubResource( 9 )
 
 [node name="Viper" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10024, 0.13, -6.59111 )
-l_controller_path = NodePath("../Player/LeftHandController")
-r_controller_path = NodePath("../Player/RightHandController")
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66681, 0.13, -6.27134 )
 
 [connection signal="car_entered" from="Car" to="." method="_on_Car_car_entered"]
 [connection signal="car_exited" from="Car" to="." method="_on_Car_car_exited"]

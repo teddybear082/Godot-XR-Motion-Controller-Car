@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/cars/Viper/CarEnterArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/cars/Viper/CarSteeringWheel.tscn" type="PackedScene" id=2]
@@ -6,11 +6,9 @@
 [ext_resource path="res://assets/cars/Viper/#.material" type="Material" id=4]
 [ext_resource path="res://assets/cars/Viper/glossy metall.material" type="Material" id=5]
 [ext_resource path="res://assets/cars/Viper/Material #12.material" type="Material" id=6]
-[ext_resource path="res://sketchfab/2013_srt_viper_gts_-_low_poly/Car00_Glass.material" type="Material" id=7]
 [ext_resource path="res://assets/cars/Viper/Disk.material" type="Material" id=8]
 [ext_resource path="res://assets/cars/Viper/tire.material" type="Material" id=9]
 [ext_resource path="res://sketchfab/2013_srt_viper_gts_-_low_poly/Car00.material" type="Material" id=10]
-[ext_resource path="res://sketchfab/2013_srt_viper_gts_-_low_poly/Car00_Matte.material" type="Material" id=11]
 [ext_resource path="res://assets/cars/Viper/Viper.gd" type="Script" id=12]
 [ext_resource path="res://assets/cars/Viper/PhysicsVRSteeringCurve.tres" type="Curve" id=13]
 [ext_resource path="res://assets/cars/Viper/originalpowercurve.tres" type="Curve" id=14]
@@ -54,7 +52,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194743,
 "index_count": 402,
-"material": ExtResource( 7 ),
+"material": ExtResource( 10 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 117
@@ -69,7 +67,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194743,
 "index_count": 750,
-"material": ExtResource( 11 ),
+"material": ExtResource( 10 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 293
@@ -84,7 +82,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194743,
 "index_count": 1395,
-"material": ExtResource( 11 ),
+"material": ExtResource( 10 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 513
