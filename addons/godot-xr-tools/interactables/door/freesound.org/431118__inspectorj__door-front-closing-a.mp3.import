@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/431118__inspectorj__door-front-closing-a.mp3-7ff993e8abb9042edd15ba089383eb0e.mp3str"
+
+[deps]
+
+source_file="res://addons/godot-xr-tools/interactables/door/freesound.org/431118__inspectorj__door-front-closing-a.mp3"
+dest_files=[ "res://.import/431118__inspectorj__door-front-closing-a.mp3-7ff993e8abb9042edd15ba089383eb0e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

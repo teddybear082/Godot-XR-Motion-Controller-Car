@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/QwertyKeys.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot-xr-tools/objects/FullPhysicalKeyboard.gd" type="Script" id=2]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/PickableKeyboard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/NumericKeys.gd" type="Script" id=4]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/SpaceKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/ShiftKey.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/EnterKey.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/DeleteKey.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/BackspaceKey.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/godot-xr-tools/objects/PhysicalKeyboard3-5/opengameart/eklee-KeyPressMac07.wav" type="AudioStream" id=10]
+
+[node name="FullPhysicalKeyboard" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="PickableKeyboard" parent="." instance=ExtResource( 3 )]
+
+[node name="QwertyKeys" type="Spatial" parent="PickableKeyboard"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290121, 0.03, -0.0647589 )
+script = ExtResource( 1 )
+
+[node name="NumericKeys" type="Spatial" parent="PickableKeyboard"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320722, 0.03, -0.138394 )
+script = ExtResource( 4 )
+
+[node name="SpaceBar" type="Spatial" parent="PickableKeyboard"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0.14494 )
+
+[node name="SpaceKey" parent="PickableKeyboard/SpaceBar" instance=ExtResource( 5 )]
+
+[node name="LeftSide" type="Spatial" parent="PickableKeyboard"]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -0.29564, 0.03, 0.146765 )
+
+[node name="ShiftKey" parent="PickableKeyboard/LeftSide" instance=ExtResource( 6 )]
+
+[node name="DeleteKey" parent="PickableKeyboard/LeftSide" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141447, 0, 0 )
+
+[node name="RightSide" type="Spatial" parent="PickableKeyboard"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.304287, 0.03, 0.14826 )
+
+[node name="EnterKey" parent="PickableKeyboard/RightSide" instance=ExtResource( 7 )]
+
+[node name="BackspaceKey" parent="PickableKeyboard/RightSide" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141277, 0, 0 )
+
+[node name="KeySounds" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 10 )

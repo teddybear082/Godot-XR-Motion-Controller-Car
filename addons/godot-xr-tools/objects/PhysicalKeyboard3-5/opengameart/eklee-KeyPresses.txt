@@ -1,0 +1,9 @@
+Single Key Press Sounds
+
+These sounds are based on following two sound recordings:
+http://freesound.org/people/eklee/sounds/158058/
+http://freesound.org/people/eklee/sounds/158057/
+
+Copyright 2012 eklee http://freesound.org/people/eklee/ | 
+Copyright 2012 qubodup http://freesound.org/people/qubodup/ extraction of single sounds | 
+License: CC Attribution 3.0 http://creativecommons.org/licenses/by/3.0/
