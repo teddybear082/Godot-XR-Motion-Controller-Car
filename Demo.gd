@@ -58,3 +58,39 @@ func enable_player_controls(boolean_value):
 	var functions = get_tree().get_nodes_in_group("movement_providers")
 	for each_function in functions:
 		each_function.enabled = boolean_value
+
+##Use Viper's enhanced signals to demonstrate how passing the car node in the signal could allow various playable cars
+##in one scene
+func _on_Viper_car_entered(car_node):
+		if car_already_entered == false:
+			car_already_entered = true
+			var arvrorigin = $Player
+			var arvrcamera = $Player/ARVRCamera
+			var seatcamera = car_node.get_node("PlayerCameraPosition")
+			var playerbodynode = $Player/PlayerBody
+			playerbodynode.enabled = false
+			enable_player_controls(false)
+			remove_child(arvrorigin)
+			car_node.add_child(arvrorigin)
+			arvrorigin.global_transform = seatcamera.global_transform
+			ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,false)
+			car_already_exited = false
+		 # Replace with function body.
+
+
+func _on_Viper_car_exited(car_node):
+		
+	if car_already_exited == false:
+		car_already_exited = true
+		var arvrorigin = car_node.get_node("Player")
+		var arvrcamera = car_node.get_node("Player/ARVRCamera")
+		var playerbodynode = car_node.get_node("Player/PlayerBody")
+		var exit_car_camera = car_node.get_node("ExitPlayerCamera")
+		car_node.remove_child(arvrorigin)
+		add_child(arvrorigin)
+		arvrorigin.global_transform = exit_car_camera.global_transform
+		playerbodynode.enabled = true
+		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
+		enable_player_controls(true)
+		car_already_entered = false
+		 # Replace with function body.
