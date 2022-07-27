@@ -4,11 +4,11 @@ extends Spatial
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var original_transform_basis = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	original_transform_basis = $Player.transform.basis
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,8 +47,7 @@ func _on_Car_car_exited():
 		var exit_car_camera = $Car/ExitPlayerCamera
 		$Car.remove_child(arvrorigin)
 		add_child(arvrorigin)
-		arvrorigin.global_transform.origin = exit_car_camera.global_transform.origin
-		arvrorigin.transform.basis = original_transform_basis
+		arvrorigin.global_transform = exit_car_camera.global_transform
 		playerbodynode.enabled = true
 		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
 		enable_player_controls(true)
@@ -89,8 +88,7 @@ func _on_Viper_car_exited(car_node):
 		var exit_car_camera = car_node.get_node("ExitPlayerCamera")
 		car_node.remove_child(arvrorigin)
 		add_child(arvrorigin)
-		arvrorigin.global_transform.origin = exit_car_camera.global_transform.origin
-		arvrorigin.transform.basis = original_transform_basis
+		arvrorigin.global_transform = exit_car_camera.global_transform
 		playerbodynode.enabled = true
 		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
 		enable_player_controls(true)
