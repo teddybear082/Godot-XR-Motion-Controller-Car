@@ -1,11 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Track/Track.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Track/crusty_stands.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/cars/caterham/car.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Demo.gd" type="Script" id=4]
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/cars/Viper/Viper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Track/Track_v2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Track/tree3.glb" type="PackedScene" id=8]
+
+[sub_resource type="GDScript" id=6]
 
 [sub_resource type="CubeMesh" id=4]
 resource_local_to_scene = true
@@ -20,86 +24,287 @@ subdivide_depth = 20
 [node name="Demo" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="Track" parent="." instance=ExtResource( 1 )]
-transform = Transform( 4.5, 0, 0, 0, 2.5, 0, 0, 0, 4.5, 0, -0.21264, 0 )
+[node name="Track_v2" parent="." instance=ExtResource( 7 )]
 
-[node name="Walls" parent="Track" index="0"]
-transform = Transform( 1, 0, 0, 0, 0.6, 0, 0, 0, 0.455, 0, 4.58604, 0 )
+[node name="Cylinder001" parent="Track_v2" index="1"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -28.6569, 15.3304, 0.738488 )
+script = SubResource( 6 )
 
-[node name="Cube" parent="Track" index="1"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 5.80688, 5.40544, 29.8459 )
+[node name="Walls" parent="Track_v2" index="2"]
+transform = Transform( 1.99, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79066, 0 )
 
-[node name="Cube001" parent="Track" index="2"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 0.0156808, 5.40544, 30.0243 )
+[node name="Cube024" parent="Track_v2" index="28"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -42.0467, 6.28197, 157.793 )
 
-[node name="Cube002" parent="Track" index="3"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -6.08032, 5.40544, 29.96 )
+[node name="Cube025" parent="Track_v2" index="29"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -48.1427, 6.28197, 157.887 )
 
-[node name="Cube003" parent="Track" index="4"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -11.8715, 5.40544, 29.5872 )
+[node name="Cube026" parent="Track_v2" index="30"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -53.9339, 6.28197, 157.842 )
 
-[node name="Cube004" parent="Track" index="5"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 30.1909, 5.40544, 26.7748 )
+[node name="Cube027" parent="Track_v2" index="31"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -60.6395, 6.28197, 157.841 )
 
-[node name="Cube005" parent="Track" index="6"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 24.3997, 5.40544, 28.0712 )
+[node name="Cube028" parent="Track_v2" index="32"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -66.4307, 6.28197, 157.716 )
 
-[node name="Cube006" parent="Track" index="7"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 18.3037, 5.40544, 28.9589 )
+[node name="Cube029" parent="Track_v2" index="33"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -72.5267, 6.28197, 157.715 )
 
-[node name="Cube007" parent="Track" index="8"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 12.5125, 5.40544, 29.4613 )
+[node name="Cube030" parent="Track_v2" index="34"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -78.3179, 6.28197, 157.886 )
 
-[node name="Cube008" parent="Track" index="9"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -18.5771, 5.40544, 28.9896 )
+[node name="Cube031" parent="Track_v2" index="35"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -83.8043, 6.28197, 157.957 )
 
-[node name="Cube009" parent="Track" index="10"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -24.3683, 5.40544, 28.0714 )
+[node name="Cube032" parent="Track_v2" index="36"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -89.5955, 6.28197, 158.586 )
 
-[node name="Cube010" parent="Track" index="11"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -30.4643, 5.40544, 26.6067 )
+[node name="Cube033" parent="Track_v2" index="37"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -53.0195, 6.049, -158.175 )
 
-[node name="Cube011" parent="Track" index="12"]
-transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -36.2555, 5.40544, 25.1855 )
+[node name="Cube034" parent="Track_v2" index="38"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -47.2283, 6.049, -158.143 )
 
-[node name="Cube012" parent="Track" index="13"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -11.8715, 5.40544, -30.0255 )
+[node name="Cube035" parent="Track_v2" index="39"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -41.1323, 6.049, -158.144 )
 
-[node name="Cube013" parent="Track" index="14"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -6.08032, 5.40544, -30.242 )
+[node name="Cube036" parent="Track_v2" index="40"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -77.4035, 6.049, -158.018 )
 
-[node name="Cube014" parent="Track" index="15"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 0.0156813, 5.40544, -30.2423 )
+[node name="Cube037" parent="Track_v2" index="41"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -71.6123, 6.049, -158.121 )
 
-[node name="Cube015" parent="Track" index="16"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 5.80688, 5.40544, -29.8925 )
+[node name="Cube038" parent="Track_v2" index="42"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -65.5163, 6.049, -158.215 )
 
-[node name="Cube016" parent="Track" index="17"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -36.2555, 5.40544, -24.9517 )
+[node name="Cube039" parent="Track_v2" index="43"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -59.7251, 6.049, -158.17 )
 
-[node name="Cube017" parent="Track" index="18"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -30.4643, 5.40544, -26.5614 )
+[node name="Cube040" parent="Track_v2" index="44"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -83.8043, 6.049, -158.093 )
 
-[node name="Cube018" parent="Track" index="19"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -24.3683, 5.40544, -28.0229 )
+[node name="Cube041" parent="Track_v2" index="45"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -90.5099, 6.049, -158.174 )
 
-[node name="Cube019" parent="Track" index="20"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -18.5771, 5.40544, -29.0299 )
+[node name="EnvPlaceHolders" type="Spatial" parent="."]
 
-[node name="Cube020" parent="Track" index="21"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 12.5125, 5.40544, -29.51 )
+[node name="crusty_stands" parent="EnvPlaceHolders" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9926, 0, 91.7822 )
 
-[node name="Cube021" parent="Track" index="22"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 18.3037, 5.40544, -29.0258 )
+[node name="crusty_stands2" parent="EnvPlaceHolders" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -88.0576, 0, -91.1275 )
 
-[node name="Cube022" parent="Track" index="23"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 24.3997, 5.40544, -27.9492 )
+[node name="CSGBox" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -480.286, 116.699, 532.864 )
+width = 90.0
+height = 250.0
+depth = 90.0
 
-[node name="Cube023" parent="Track" index="24"]
-transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 30.1909, 5.40544, -26.5516 )
+[node name="CSGBox2" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -295.871, 116.699, 767.192 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox3" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132.394, 248.801, 767.192 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="CSGBox4" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2334.38, 116.699, 532.864 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox5" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2149.97, 116.699, 767.192 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox6" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1986.49, 248.801, 767.192 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="CSGBox7" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2334.38, 116.699, 1676.38 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox8" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2149.97, 116.699, 1910.71 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox9" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1986.49, 248.801, 1910.71 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="CSGBox10" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2011.98, 116.699, 532.864 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox11" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1763.27, 116.699, 767.192 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox12" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2359.87, 248.801, 767.192 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="CSGBox13" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 157.885, 116.699, 532.864 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox14" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 342.3, 116.699, 767.192 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox15" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 505.776, 248.801, 767.192 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="CSGBox19" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 938.856, 116.699, 532.864 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox20" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 1123.27, 116.699, 767.192 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox21" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 948.382, 380.138, 1122.94 )
+width = 90.0
+height = 853.011
+depth = 90.0
+
+[node name="CSGBox16" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 157.885, 116.699, 1676.38 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox17" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 342.3, 116.699, 1910.71 )
+width = 90.0
+height = 250.0
+depth = 90.0
+
+[node name="CSGBox18" type="CSGBox" parent="EnvPlaceHolders"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 505.776, 248.801, 1910.71 )
+width = 90.0
+height = 533.223
+depth = 90.0
+
+[node name="tree3" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 201.697, 0.43276, -145.621 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree3" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 2.24891, -2.38419e-07, -2.01307 )
+
+[node name="tree4" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 213.443, 0.43276, -157.717 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree4" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, -1.14052, 0, 0 )
+
+[node name="tree5" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 186.803, 0.43276, -157.717 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree5" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="tree6" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 186.803, 0.43276, -185.61 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree6" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, -1.05356, 1.86265e-07, 1.53967 )
+
+[node name="tree7" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 196.803, 0.43276, -185.61 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree7" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="tree8" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 196.803, 0.43276, -168.075 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree8" index="0"]
+transform = Transform( 0.445604, 0, 0, 0, -2.30197e-08, 0.369969, 0, -0.526629, -1.61719e-08, -0.909012, -4.09782e-08, -0.927324 )
+
+[node name="tree9" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 206.353, 0.43276, -168.075 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree9" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="tree10" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 206.353, 0.43276, -194.075 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree10" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="tree11" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 219.539, 0.43276, -194.075 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree11" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="tree12" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 219.539, 0.43276, -179.932 )
+
+[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree12" index="0"]
+transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.871854, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986077, 0 )
+
+[node name="Skeleton" parent="Player/LeftHandController/LeftPhysicsHand/LeftHand/Armature_Left" index="0"]
+bones/0/bound_children = [ NodePath("BoneRoot") ]
+bones/1/bound_children = [ NodePath("BoneThumbMetacarpal") ]
+bones/2/bound_children = [ NodePath("BoneThumbProximal") ]
+bones/3/bound_children = [ NodePath("BoneThumbDistal") ]
+bones/4/bound_children = [ NodePath("BoneIndexMetacarpal") ]
+bones/5/bound_children = [ NodePath("BoneIndexProximal") ]
+bones/6/bound_children = [ NodePath("BoneIndexMiddle") ]
+bones/7/bound_children = [ NodePath("BoneIndexDistal") ]
+bones/8/bound_children = [ NodePath("BoneMiddleMetacarpal") ]
+bones/9/bound_children = [ NodePath("BoneMiddleProximal") ]
+bones/10/bound_children = [ NodePath("BoneMiddleMiddle") ]
+bones/11/bound_children = [ NodePath("BoneMiddleDistal") ]
+bones/12/bound_children = [ NodePath("BoneRingMetacarpal") ]
+bones/13/bound_children = [ NodePath("BoneRingProximal") ]
+bones/14/bound_children = [ NodePath("BoneRingMiddle") ]
+bones/15/bound_children = [ NodePath("BoneRingDistal") ]
+bones/16/bound_children = [ NodePath("BonePinkyMetacarpal") ]
+bones/17/bound_children = [ NodePath("BonePinkyProximal") ]
+bones/18/bound_children = [ NodePath("BonePinkyMiddle") ]
+bones/19/bound_children = [ NodePath("BonePinkyDistal") ]
 
 [node name="BoneRoot" parent="Player/LeftHandController/LeftPhysicsHand/LeftHand/Armature_Left/Skeleton" index="1"]
 transform = Transform( 1, -2.50192e-40, 1.51496e-08, 1.51445e-08, -0.025905, -0.999665, 3.92449e-10, 0.999664, -0.025905, 7.2293e-21, 0.000360775, -0.0235019 )
@@ -163,6 +368,28 @@ transform = Transform( 0.463311, -0.822464, -0.329992, -0.51281, 0.0548708, -0.8
 
 [node name="Grapple_Target" parent="Player/LeftHandController/Function_Grapple_movement" index="1"]
 mesh = SubResource( 4 )
+
+[node name="Skeleton" parent="Player/RightHandController/RightPhysicsHand/RightHand/Armature_Left" index="0"]
+bones/0/bound_children = [ NodePath("BoneRoot") ]
+bones/1/bound_children = [ NodePath("BoneThumbMetacarpal") ]
+bones/2/bound_children = [ NodePath("BoneThumbProximal") ]
+bones/3/bound_children = [ NodePath("BoneThumbDistal") ]
+bones/4/bound_children = [ NodePath("BoneIndexMetacarpal") ]
+bones/5/bound_children = [ NodePath("BoneIndexProximal") ]
+bones/6/bound_children = [ NodePath("BoneIndexMiddle") ]
+bones/7/bound_children = [ NodePath("BoneIndexDistal") ]
+bones/8/bound_children = [ NodePath("BoneMiddleMetacarpal") ]
+bones/9/bound_children = [ NodePath("BoneMiddleProximal") ]
+bones/10/bound_children = [ NodePath("BoneMiddleMiddle") ]
+bones/11/bound_children = [ NodePath("BoneMiddleDistal") ]
+bones/12/bound_children = [ NodePath("BoneRingMetacarpal") ]
+bones/13/bound_children = [ NodePath("BoneRingProximal") ]
+bones/14/bound_children = [ NodePath("BoneRingMiddle") ]
+bones/15/bound_children = [ NodePath("BoneRingDistal") ]
+bones/16/bound_children = [ NodePath("BonePinkyMetacarpal") ]
+bones/17/bound_children = [ NodePath("BonePinkyProximal") ]
+bones/18/bound_children = [ NodePath("BonePinkyMiddle") ]
+bones/19/bound_children = [ NodePath("BonePinkyDistal") ]
 
 [node name="BoneRoot" parent="Player/RightHandController/RightPhysicsHand/RightHand/Armature_Left/Skeleton" index="1"]
 transform = Transform( 1, -2.50192e-40, 1.51496e-08, 1.51445e-08, -0.025905, -0.999665, 3.92449e-10, 0.999664, -0.025905, 7.2293e-21, 0.000360775, -0.0235019 )
@@ -253,7 +480,17 @@ environment = ExtResource( 5 )
 [connection signal="car_entered" from="Viper" to="." method="_on_Viper_car_entered"]
 [connection signal="car_exited" from="Viper" to="." method="_on_Viper_car_exited"]
 
-[editable path="Track"]
+[editable path="Track_v2"]
+[editable path="EnvPlaceHolders/tree3"]
+[editable path="EnvPlaceHolders/tree4"]
+[editable path="EnvPlaceHolders/tree5"]
+[editable path="EnvPlaceHolders/tree6"]
+[editable path="EnvPlaceHolders/tree7"]
+[editable path="EnvPlaceHolders/tree8"]
+[editable path="EnvPlaceHolders/tree9"]
+[editable path="EnvPlaceHolders/tree10"]
+[editable path="EnvPlaceHolders/tree11"]
+[editable path="EnvPlaceHolders/tree12"]
 [editable path="Player"]
 [editable path="Player/LeftHandController/LeftPhysicsHand"]
 [editable path="Player/LeftHandController/LeftPhysicsHand/LeftHand"]
