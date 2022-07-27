@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Track/Track.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cars/caterham/car.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Demo.gd" type="Script" id=4]
+[ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/cars/Viper/Viper.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CubeMesh" id=4]
@@ -243,6 +244,9 @@ r_controller_path = NodePath("../Player/RightHandController")
 MAX_ENGINE_FORCE = 200.0
 MAX_BRAKE_FORCE = 5.0
 gear_ratios = [ 4.5, 3.8, 2.7, 1.5, 1.2, 1.0 ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
 
 [connection signal="car_entered" from="Car" to="." method="_on_Car_car_entered"]
 [connection signal="car_exited" from="Car" to="." method="_on_Car_car_exited"]
