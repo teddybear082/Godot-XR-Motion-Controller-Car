@@ -1,0 +1,180 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Track/track_v2.glb" type="PackedScene" id=1]
+[ext_resource path="res://Track/Concrete.material" type="Material" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ScoreSpin"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="Track_v2" instance=ExtResource( 1 )]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="." index="0"]
+transform = Transform( 1.28888, 0, 0, 0, 0.718474, 0, 0, 0, 1.28888, -28.6334, 1.65991, 0.734045 )
+height = 4.02991
+material = ExtResource( 2 )
+
+[node name="Ad1" type="Label3D" parent="Cylinder001" index="0"]
+transform = Transform( 4.08678, 0, -0.511323, 0, 3.64142, 0, 2.43157, 0, 0.859389, -0.391962, 0, 0.587852 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "F
+R
+E
+E
+
+B
+E
+E
+R"
+
+[node name="Ad2" type="Label3D" parent="Cylinder001" index="1"]
+transform = Transform( -4.1658, 0, -0.482304, 0, 3.64142, 0, 2.29358, 0, -0.876004, -0.314675, 0, -0.640409 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "V
+4
+O
+U
+T
+
+N
+O
+W"
+
+[node name="Label3D" type="Label3D" parent="Cylinder001" index="2"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 2.165, 4.47035e-08 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 1 00:00"
+
+[node name="Label3D2" type="Label3D" parent="Cylinder001" index="3"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 1.69119, 4.47035e-08 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 2 00:00"
+
+[node name="Label3D3" type="Label3D" parent="Cylinder001" index="4"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 1.19224, 4.47035e-08 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 3 00:00"
+
+[node name="Label3D5" type="Label3D" parent="Cylinder001" index="5"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 0.683552, 4.47035e-08 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 4 00:00"
+
+[node name="ScoreTowerSpin" type="AnimationPlayer" parent="Cylinder001" index="6"]
+autoplay = "ScoreSpin"
+anims/ScoreSpin = SubResource( 1 )
+
+[node name="Walls" parent="." index="2"]
+transform = Transform( 2, 0, 0, 0, 0.995, 0, 0, 0, 1, 0, 6.79066, 0 )
+
+[node name="Cube" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 5.80688, 6.28197, 157.668 )
+
+[node name="Cube001" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 0.0156808, 6.28197, 157.637 )
+
+[node name="Cube002" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -6.08032, 6.28197, 157.718 )
+
+[node name="Cube003" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -11.8715, 6.28197, 157.811 )
+
+[node name="Cube004" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 30.1909, 6.28197, 157.564 )
+
+[node name="Cube005" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 24.3997, 6.28197, 157.584 )
+
+[node name="Cube006" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 18.3037, 6.28197, 157.51 )
+
+[node name="Cube007" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, 12.5125, 6.28197, 157.668 )
+
+[node name="Cube008" parent="." index="11"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -18.5771, 6.28197, 157.705 )
+
+[node name="Cube009" parent="." index="12"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -24.3683, 6.28197, 157.742 )
+
+[node name="Cube010" parent="." index="13"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -30.4643, 6.28197, 157.749 )
+
+[node name="Cube011" parent="." index="14"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -36.2555, 6.28197, 157.835 )
+
+[node name="Cube012" parent="." index="15"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -11.8715, 6.049, -157.972 )
+
+[node name="Cube013" parent="." index="16"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -6.08032, 6.049, -158.188 )
+
+[node name="Cube014" parent="." index="17"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 0.0156813, 6.049, -158.188 )
+
+[node name="Cube015" parent="." index="18"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 5.80688, 6.049, -157.838 )
+
+[node name="Cube016" parent="." index="19"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -36.2555, 6.049, -158.072 )
+
+[node name="Cube017" parent="." index="20"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -30.4643, 6.049, -157.931 )
+
+[node name="Cube018" parent="." index="21"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -24.3683, 6.049, -157.937 )
+
+[node name="Cube019" parent="." index="22"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -18.5771, 6.049, -157.917 )
+
+[node name="Cube020" parent="." index="23"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 12.5125, 6.049, -157.751 )
+
+[node name="Cube021" parent="." index="24"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 18.3037, 6.049, -157.73 )
+
+[node name="Cube022" parent="." index="25"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 24.3997, 6.049, -157.623 )
+
+[node name="Cube023" parent="." index="26"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, 30.1909, 6.049, -157.573 )
+
+[node name="Track" parent="." index="27"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79066, 0 )
+
+[node name="Cube024" parent="." index="28"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -42.0467, 6.28197, 160.614 )
+
+[node name="Cube025" parent="." index="29"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -48.1427, 6.28197, 160.708 )
+
+[node name="Cube026" parent="." index="30"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -53.9339, 6.28197, 160.663 )
+
+[node name="Cube027" parent="." index="31"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -60.6395, 6.28197, 160.662 )
+
+[node name="Cube028" parent="." index="32"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -66.4307, 6.28197, 160.537 )
+
+[node name="Cube029" parent="." index="33"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -72.5267, 6.28197, 160.536 )
+
+[node name="Cube030" parent="." index="34"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -78.3179, 6.28197, 160.707 )
+
+[node name="Cube031" parent="." index="35"]
+transform = Transform( 1, 0, 0, 0, 40, 0, 0, 0, 1, -83.8043, 6.28197, 160.778 )
