@@ -80,8 +80,8 @@ var _right_controller
 export var MAX_ENGINE_FORCE = 200.0
 export var MAX_BRAKE_FORCE = 5.0
 
-export (Array) var gear_ratios = [ 4.25, 3.6, 2.7, 1.5, 1.2, 1.0 ] 
-export (float) var reverse_ratio = -3.5
+export (Array) var gear_ratios = [ 4.3, 3.8, 2.7, 1.5, 1.2, 1.0 ] 
+export (float) var reverse_ratio = -2.8
 export (float) var final_drive_ratio = 3.38
 export (float) var max_engine_rpm = 8000.0
 export (Curve) var power_curve = null
@@ -175,7 +175,7 @@ func _physics_process(delta):
 	var rpm_factor = clamp(rpm / max_engine_rpm, 0.0, 1.0)
 	var power_factor = power_curve.interpolate_baked(rpm_factor)
 	
-	$EngineAudio.pitch_scale = clamp(rpm_factor, .6, 1.2) 
+	$EngineAudio.pitch_scale = clamp(rpm_factor, .6, 1.2)
 	
 	if current_gear == -1:
 		engine_force = clutch_position * throttle_val * power_factor * reverse_ratio * final_drive_ratio * MAX_ENGINE_FORCE

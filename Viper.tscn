@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/cars/Viper/CarEnterArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/cars/Viper/CarSteeringWheel.tscn" type="PackedScene" id=2]
@@ -407,8 +407,10 @@ size = Vector3( 0.02, 0.02, 0.06 )
 height = 4.0
 radius = 1.5
 
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 1, 0.477826, 2.09542 )
+
 [node name="Viper" type="VehicleBody"]
-mass = 153.061
 script = ExtResource( 12 )
 steer_curve = ExtResource( 13 )
 power_curve = ExtResource( 14 )
@@ -595,10 +597,16 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.18097
 pixel_size = 0.003
 text = "TEST"
 
+[node name="Area" type="Area" parent="."]
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68577, 0 )
+shape = SubResource( 30 )
+
 [node name="EngineAudio" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.739557, 0.997196 )
 stream = ExtResource( 11 )
-unit_size = 2.0
 
 [node name="CarDoorAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 7 )

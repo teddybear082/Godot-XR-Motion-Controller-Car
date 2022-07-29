@@ -127,3 +127,13 @@ func _on_vehicle_GodotBike_bike_exited(bike_node):
 		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
 		enable_player_controls(true)
 		car_already_entered = false
+
+func _on_StartingLine_area_entered(area):
+	if area.collision_layer == 512:
+		$LapChime.play()
+		$CounterTimer.reset()
+		$CounterTimer.start()
+		
+func _process(delta):
+	$Track_v2/Cylinder001/Label3D.text = str($CounterTimer.counter_time)
+	
