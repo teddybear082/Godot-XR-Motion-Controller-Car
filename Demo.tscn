@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Track/crusty_stands.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/cars/caterham/car.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/cars/Viper/Viper.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Track/Track_v2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Track/tree3.glb" type="PackedScene" id=8]
+[ext_resource path="res://assets/motorcycle/vehicle_GodotBike.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=6]
 
@@ -427,10 +428,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1664, 0.43276, -25.5505 )
 l_controller_path = NodePath("../Player/LeftHandController")
 r_controller_path = NodePath("../Player/RightHandController")
 
+[node name="vehicle_GodotBike" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4587, 0.478884, -24.5582 )
+l_controller_path = NodePath("../Player/LeftHandController")
+r_controller_path = NodePath("../Player/RightHandController")
+
 [connection signal="car_entered" from="Car" to="." method="_on_Car_car_entered"]
 [connection signal="car_exited" from="Car" to="." method="_on_Car_car_exited"]
 [connection signal="car_entered" from="Viper" to="." method="_on_Viper_car_entered"]
 [connection signal="car_exited" from="Viper" to="." method="_on_Viper_car_exited"]
+[connection signal="bike_entered" from="vehicle_GodotBike" to="." method="_on_vehicle_GodotBike_bike_entered"]
+[connection signal="bike_exited" from="vehicle_GodotBike" to="." method="_on_vehicle_GodotBike_bike_exited"]
 
 [editable path="Track_v2"]
 [editable path="EnvPlaceHolders/tree3"]

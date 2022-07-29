@@ -96,3 +96,34 @@ func _on_Viper_car_exited(car_node):
 		enable_player_controls(true)
 		car_already_entered = false
 		 # Replace with function body.
+
+
+func _on_vehicle_GodotBike_bike_entered(bike_node):
+	if car_already_entered == false:
+		car_already_entered = true
+		var arvrorigin = get_node("Player")
+		var seatcamera = bike_node.get_node("PlayerCameraPosition")
+		var playerbodynode = arvrorigin.get_node("PlayerBody")
+		playerbodynode.enabled = false
+		enable_player_controls(false)
+		remove_child(arvrorigin)
+		bike_node.add_child(arvrorigin)
+		arvrorigin.global_transform = seatcamera.global_transform
+		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,false)
+		car_already_exited = false
+
+
+func _on_vehicle_GodotBike_bike_exited(bike_node):
+	if car_already_exited == false:
+		car_already_exited = true
+		var arvrorigin = bike_node.get_node("Player")
+		var playerbodynode = bike_node.get_node("Player/PlayerBody")
+		var exit_bike_camera = bike_node.get_node("ExitPlayerCamera")
+		bike_node.remove_child(arvrorigin)
+		add_child(arvrorigin)
+		arvrorigin.global_transform.origin = exit_bike_camera.global_transform.origin
+		arvrorigin.transform.basis = original_transform_basis
+		playerbodynode.enabled = true
+		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
+		enable_player_controls(true)
+		car_already_entered = false

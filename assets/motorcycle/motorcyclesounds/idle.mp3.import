@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/idle.mp3-f1d278ea451a4cbaa054e8a78d7c7aee.mp3str"
+
+[deps]
+
+source_file="res://assets/motorcycle/motorcyclesounds/idle.mp3"
+dest_files=[ "res://.import/idle.mp3-f1d278ea451a4cbaa054e8a78d7c7aee.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
