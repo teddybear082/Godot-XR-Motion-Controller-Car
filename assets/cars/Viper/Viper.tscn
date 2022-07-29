@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/cars/Viper/CarEnterArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/cars/Viper/CarSteeringWheel.tscn" type="PackedScene" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://assets/cars/Viper/#.material" type="Material" id=4]
 [ext_resource path="res://assets/cars/Viper/glossy metall.material" type="Material" id=5]
 [ext_resource path="res://assets/cars/Viper/Material #12.material" type="Material" id=6]
+[ext_resource path="res://Audio/cardooropen.mp3" type="AudioStream" id=7]
 [ext_resource path="res://assets/cars/Viper/Disk.material" type="Material" id=8]
 [ext_resource path="res://assets/cars/Viper/tire.material" type="Material" id=9]
 [ext_resource path="res://sketchfab/2013_srt_viper_gts_-_low_poly/Car00.material" type="Material" id=10]
+[ext_resource path="res://Audio/engine.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/cars/Viper/Viper.gd" type="Script" id=12]
 [ext_resource path="res://assets/cars/Viper/PhysicsVRSteeringCurve.tres" type="Curve" id=13]
 [ext_resource path="res://assets/cars/Viper/originalpowercurve.tres" type="Curve" id=14]
@@ -405,6 +407,9 @@ size = Vector3( 0.02, 0.02, 0.06 )
 height = 4.0
 radius = 1.5
 
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 1, 0.477826, 2.09542 )
+
 [node name="Viper" type="VehicleBody"]
 script = ExtResource( 12 )
 steer_curve = ExtResource( 13 )
@@ -591,6 +596,20 @@ shape = SubResource( 14 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.180973, 0.945842, -0.141928 )
 pixel_size = 0.003
 text = "TEST"
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68577, 0 )
+shape = SubResource( 30 )
+
+[node name="EngineAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="CarDoorAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="CarEnterArea" to="." method="_on_CarEnterArea_body_entered"]
 [connection signal="body_entered" from="CarExitArea" to="." method="_on_CarExitArea_body_entered"]
