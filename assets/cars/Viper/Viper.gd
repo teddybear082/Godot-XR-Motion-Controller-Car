@@ -2,6 +2,9 @@ extends VehicleBody
 
 
 ############################################################
+#Vehicle number for customization or tracking multiple cars
+export var car_number = 1
+
 # Steering
 
 export var MAX_STEER_ANGLE = 30
@@ -132,7 +135,8 @@ func _ready():
 	else:
 		_shift_down_controller = _right_controller
 
-	# Called every time the node is added to the scene.
+	#Set Car Number Decal; set to "" if none is wanted
+	$CarNumber.text = str(car_number)
 
 
 func _process_gear_inputs(delta : float):

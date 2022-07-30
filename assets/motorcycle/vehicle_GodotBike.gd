@@ -2,6 +2,10 @@ extends VehicleBody
 
 
 ############################################################
+#Vehicle number for customization or tracking multiple cars
+export var car_number = 3
+
+
 # Steering
 
 export var MAX_STEER_ANGLE = 20
@@ -9,7 +13,15 @@ export var SPEED_STEER_ANGLE = 10
 export var MAX_STEER_SPEED = 120.0
 export var MAX_STEER_INPUT = 90.0
 export var STEER_SPEED = 1.0
-export var LEAN_SPEED = 3.0
+
+#Variable to determine at what speed bike starts to lean with player body. 0 Lean Speed will mean bike always leans. Setting above max speed will turn off lean.
+export var LEAN_SPEED = 15.0
+
+#Variable to use in calculating how aggressive lean is.  The speed of the bike is divided by this number as a multiplier to how much the player is physically leaning.
+#The lower this variable is, the more exaggerated the lean will be.  Do not set it to zero.  
+#You could add a line of code: LEAN_SPEED_DIVISOR  = speed in the leaning code to turn off dynamic leaning and always have it 1:1 to player body movement.
+export var LEAN_SPEED_DIVISOR = 60.0
+
 
 onready var max_steer_angle_rad = deg2rad(MAX_STEER_ANGLE)
 onready var speed_steer_angle_rad = deg2rad(SPEED_STEER_ANGLE)
@@ -22,9 +34,10 @@ var steer_angle = 0.0
 var player_is_seated = false
 var was_gear_up = false
 var was_gear_down = false
-var grounded = true
 var steer_lean = false
 var lean_val = 0
+var speed = 0
+var rpm = 0
 signal bike_entered(bike_node)
 signal bike_exited(bike_node)
 
@@ -145,10 +158,12 @@ func calculate_rpm() -> float:
 # Input
 
 func _ready():
+	
+	#Assign controlls
 	_left_controller = get_node(l_controller_path)
 	_right_controller = get_node(r_controller_path)
 	
-		# Get the controllers
+	# Get the controllers
 	if shift_up_controller == Shift_Up_Controller.LEFT:
 		_shift_up_controller = _left_controller
 	else:
@@ -174,7 +189,10 @@ func _ready():
 
 	$IdleSound.play()
 	
+	#Set Car Number Decal; set to "" if none is wanted
+	$CarNumber.text = str(car_number)
 
+#Handle Shifting
 func _process_gear_inputs(delta : float):
 	if gear_timer > 0.0:
 		gear_timer = max(0.0, gear_timer - delta)
@@ -194,58 +212,52 @@ func _process_gear_inputs(delta : float):
 func _process(delta : float):
 	_process_gear_inputs(delta)
 	
-	var speed = get_speed_kph()
-	var rpm = calculate_rpm()
+	speed = get_speed_kph()
+	rpm = calculate_rpm()
 	
 	var info = 'Speed: %.0f, RPM: %.0f (gear: %d)'  % [ speed, rpm, current_gear ]
 	
+	#Show info on HUD
 	$Info.text = info
 	
+	#Change sounds based on speed
 	if speed > 5:
-		if $EngineSound.playing == false:
+		if $EngineAudio.playing == false:
 			$IdleSound.stop()
-			$EngineSound.play()
+			$EngineAudio.play()
 			
 	elif speed < 5:
 		if $IdleSound.playing == false:
-			$EngineSound.stop()
+			$EngineAudio.stop()
 			$IdleSound.play()
-			
-	if speed >= 15:
+	
+	#Determine whether bike will lean based on player movement or not; a lean speed of 0 will mean bike will always lean		
+	if speed >= LEAN_SPEED:
 		steer_lean = true
 		
-	elif speed < 13:
+	elif speed < LEAN_SPEED-2:
 		steer_lean = false
-	#Lean with player head rotation, except for some reason this breaks forward movement
-#	lean_val = get_lean_input()
-#	if player_is_seated == true:
-#		axis_lock_angular_z = false
-#		axis_lock_angular_x = false
-	#	rotation.z = lerp(rotation.z, lean_val, LEAN_SPEED * delta)
+	
+#Handle bike lean based on player head movement; has to be done in integrate forces; breaks if this code is in _process or _physics_process
 func _integrate_forces(state):
-	#	Lean with player head rotation, except for some reason this breaks forward movement
-#	lean_val = get_lean_input()
+	#	Lean with player head rotation
 	if player_is_seated == true:
-#		axis_lock_angular_z = false
-#		axis_lock_angular_x = false
-#		if steer_lean == true:
-#			axis_lock_angular_z = false
+#		
+		if steer_lean == true:
 			lean_val = get_lean_input()
-#			rotation.z=lerp(rotation.z, lean_val, .9)
-			rotation.z = lean_val*1.5
-#			angular_velocity = lerp(angular_velocity, -transform.basis.z*lean_val, 0.1)		
-#		elif abs(rotation_degrees.z) >= 1:
-#			angular_velocity = lerp(angular_velocity, -transform.basis.z*sin(rotation_degrees.z), 0.1)
-#		else:
-#			angular_velocity.z = 0
-#			angular_velocity.x = 0
-#			axis_lock_angular_x = true
-#			axis_lock_angular_z = true
+			
+			#Prevent divide by zero errors
+			if LEAN_SPEED_DIVISOR == 0:
+				LEAN_SPEED_DIVISOR = 60
+			#Rotate bike by lean, but exaggerate lean angle the faster that the bike goes. LEAN SPEED DIVISOR is an export variable for easy tweaking
+			rotation.z = lean_val*(speed/LEAN_SPEED_DIVISOR)
+
+#Handle physics engine calculations			
 func _physics_process(delta):
 	# how fast are we going in meters per second?
 	current_speed_mps = (translation - last_pos).length() / delta
 		
-	# get our joystick inputs
+	# get our inputs
 	var steer_val = get_steering_input()
 	var throttle_val = get_throttle_input()
 	var brake_val = get_brake_input()
@@ -254,6 +266,8 @@ func _physics_process(delta):
 	var rpm = calculate_rpm()
 	var rpm_factor = clamp(rpm / max_engine_rpm, 0.0, 1.0)
 	var power_factor = power_curve.interpolate_baked(rpm_factor)
+	
+	$EngineAudio.pitch_scale = clamp(rpm_factor, .6, 1.2)
 	
 	if current_gear == -1:
 		engine_force = clutch_position * throttle_val * power_factor * reverse_ratio * final_drive_ratio * MAX_ENGINE_FORCE
@@ -279,7 +293,8 @@ func _physics_process(delta):
 	steer_angle = steer_val * lerp(max_steer_angle_rad, speed_steer_angle_rad, steer_speed_factor)
 	steering = -steer_angle
 	
-	#Prevent bike from falling down
+	
+	#Prevent bike from falling down while standing
 	if player_is_seated == false:
 		angular_velocity.x = 0
 		angular_velocity.z = 0
@@ -324,7 +339,8 @@ func get_shift_up():
 		else:
 			was_gear_up = false
 		return false
-		
+
+#Use physical steering controls to determine steering input
 func get_steering_input():
 	if player_is_seated == false:
 		return 0
@@ -333,9 +349,10 @@ func get_steering_input():
 		if $MotorCycleHandleBars/HingeOrigin/InteractableHinge.hinge_position == 0:
 			return 0
 		else:
-			#use 90 instead of 360 because no one turns handle bars more than degrees on a motorcycle, could also try 90
+			#use 90 instead of 360 because no one turns handle bars more than degrees on a motorcycle
 			return -$MotorCycleHandleBars/HingeOrigin/InteractableHinge.hinge_position/90
 
+#Use buttons for throttle input
 func get_throttle_input():
 	if player_is_seated == false:
 		return 0
@@ -344,7 +361,8 @@ func get_throttle_input():
 			return -1
 		else:
 			return 0
-			
+
+#Use buttons for brake input			
 func get_brake_input():
 	if player_is_seated == false:
 		return 0
@@ -354,6 +372,8 @@ func get_brake_input():
 		else:
 			return 0
 
+#Determine angle of camera vs. origin  to determine player lean
+#Could also try using angle of hands or mixing both
 func get_lean_input():
 	if player_is_seated == false:
 		return 0
@@ -364,7 +384,7 @@ func get_lean_input():
 #		return $Player/ARVRCamera.transform.basis.z - $Player.global_transform.basis.z
 		return $Player/ARVRCamera.rotation.z - $Player.rotation.z
 	
-
+#Used if there are NPCs to avoid odd physics interactions; assumes NPCs are in group called "enemies"
 func _on_EnemyKillZone_body_entered(body):
 	
 	if body.is_in_group("enemies"):

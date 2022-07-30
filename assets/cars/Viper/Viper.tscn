@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/cars/Viper/CarEnterArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/cars/Viper/CarSteeringWheel.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/cars/Viper/Viper.gd" type="Script" id=12]
 [ext_resource path="res://assets/cars/Viper/PhysicsVRSteeringCurve.tres" type="Curve" id=13]
 [ext_resource path="res://assets/cars/Viper/originalpowercurve.tres" type="Curve" id=14]
+[ext_resource path="res://fonts/Tytoon Mist.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Sketchfab_Scene_Cylinder_0"
@@ -408,7 +409,11 @@ height = 4.0
 radius = 1.5
 
 [sub_resource type="BoxShape" id=30]
-extents = Vector3( 1, 0.477826, 2.09542 )
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 256
+font_data = ExtResource( 15 )
 
 [node name="Viper" type="VehicleBody"]
 script = ExtResource( 12 )
@@ -597,12 +602,12 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.18097
 pixel_size = 0.003
 text = "TEST"
 
-[node name="Area" type="Area" parent="."]
+[node name="DetectionArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.629899, 1.71436 )
 collision_layer = 512
 collision_mask = 1024
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68577, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="DetectionArea"]
 shape = SubResource( 30 )
 
 [node name="EngineAudio" type="AudioStreamPlayer3D" parent="."]
@@ -610,6 +615,13 @@ stream = ExtResource( 11 )
 
 [node name="CarDoorAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 7 )
+
+[node name="CarNumber" type="Label3D" parent="."]
+transform = Transform( -4.26698e-08, -0.217002, 0.976171, -9.48545e-09, 0.976171, 0.217002, -1, 0, -4.37114e-08, 0.953957, 0.67206, -0.38767 )
+pixel_size = 0.001
+modulate = Color( 0.658824, 0.654902, 0.654902, 1 )
+text = "1"
+font = SubResource( 31 )
 
 [connection signal="body_entered" from="CarEnterArea" to="." method="_on_CarEnterArea_body_entered"]
 [connection signal="body_entered" from="CarExitArea" to="." method="_on_CarExitArea_body_entered"]

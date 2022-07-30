@@ -3,6 +3,10 @@ extends VehicleBody
 
 
 ############################################################
+#Vehicle number for customization or tracking multiple cars
+export var car_number = 2
+
+
 # Steering
 
 export var MAX_STEER_ANGLE = 30

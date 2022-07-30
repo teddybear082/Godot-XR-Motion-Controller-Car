@@ -53,27 +53,57 @@ N
 O
 W"
 
-[node name="Label3D" type="Label3D" parent="Cylinder001" index="2"]
-transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 2.165, 4.47035e-08 )
+[node name="LapLabel1" type="Label3D" parent="Cylinder001" index="2"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, 2.21259, 0 )
 modulate = Color( 1, 0.866667, 0, 1 )
 text = "LAP 1 00:00"
 
-[node name="Label3D2" type="Label3D" parent="Cylinder001" index="3"]
-transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 1.69119, 4.47035e-08 )
+[node name="LapLabel2" type="Label3D" parent="Cylinder001" index="3"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, 1.75, 0 )
 modulate = Color( 1, 0.866667, 0, 1 )
 text = "LAP 2 00:00"
 
-[node name="Label3D3" type="Label3D" parent="Cylinder001" index="4"]
-transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 1.19224, 4.47035e-08 )
+[node name="LapLabel3" type="Label3D" parent="Cylinder001" index="4"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, 1.25, 0 )
 modulate = Color( 1, 0.866667, 0, 1 )
 text = "LAP 3 00:00"
 
-[node name="Label3D5" type="Label3D" parent="Cylinder001" index="5"]
-transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.698909, 0.683552, 4.47035e-08 )
+[node name="LapLabel4" type="Label3D" parent="Cylinder001" index="5"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, 0.75, 0 )
 modulate = Color( 1, 0.866667, 0, 1 )
 text = "LAP 4 00:00"
 
-[node name="ScoreTowerSpin" type="AnimationPlayer" parent="Cylinder001" index="6"]
+[node name="LapLabel5" type="Label3D" parent="Cylinder001" index="6"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, 0.25, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 5 00:00"
+
+[node name="LapLabel6" type="Label3D" parent="Cylinder001" index="7"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, -0.25, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 6 00:00"
+
+[node name="LapLabel7" type="Label3D" parent="Cylinder001" index="8"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, -0.75, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 7 00:00"
+
+[node name="LapLabel8" type="Label3D" parent="Cylinder001" index="9"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, -1.25, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 8 00:00"
+
+[node name="LapLabel9" type="Label3D" parent="Cylinder001" index="10"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, -1.75, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP 9 00:00"
+
+[node name="LapLabel10" type="Label3D" parent="Cylinder001" index="11"]
+transform = Transform( -1.26854e-07, 0, 1, 0, 2.5298, 0, -2.90208, 0, -4.37114e-08, 0.699, -2.25, 0 )
+modulate = Color( 1, 0.866667, 0, 1 )
+text = "LAP10 00:00"
+
+[node name="ScoreTowerSpin" type="AnimationPlayer" parent="Cylinder001" index="12"]
 autoplay = "ScoreSpin"
 anims/ScoreSpin = SubResource( 1 )
 

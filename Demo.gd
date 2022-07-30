@@ -4,10 +4,13 @@ extends Spatial
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+export var MAX_LAPS = 10
 var original_transform_basis = null
-
+var proper_start = false
+var proper_direction = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#keep track of player's orientation at start to avoid problems when exiting car
 	original_transform_basis = $Player.transform.basis
 
 var lapCount = 0
@@ -129,13 +132,18 @@ func _on_vehicle_GodotBike_bike_exited(bike_node):
 		car_already_entered = false
 
 func _on_StartingLine_area_entered(area):
-	if area.collision_layer == 512:
-		$LapChime.play()
-		$CounterTimer.reset()
-		$CounterTimer.start()
-		lapCount += 1
-		if lapCount == 11:
-			lapCount = 1
+	if proper_start == true and proper_direction == true:
+		if area.collision_layer == 512:
+		#used for distinguishing between cars at some point, not currently used
+			var car_number = area.get_parent().car_number
+			
+			$LapChime.play()
+			$CounterTimer.reset()
+			$CounterTimer.start()
+			lapCount += 1
+			if lapCount > MAX_LAPS:
+				lapCount = 1
+			proper_direction = false
 			
 func _update_lap_scores():
 	if lapCount == 1:
@@ -161,3 +169,13 @@ func _update_lap_scores():
 	
 func _process(delta):
 	_update_lap_scores()
+
+
+func _on_StartingBlock_area_exited(area):
+	if area.collision_layer == 512:
+		proper_start = true
+		proper_direction = true # Replace with function body.
+		if $StartingBlock/StartingBlockMesh.visible == true:
+			$StartingBlock/StartingBlockMesh.visible = false
+		if $StartingBlock/StartingLabel3D.visible == true:
+			$StartingBlock/StartingLabel3D.visible = false

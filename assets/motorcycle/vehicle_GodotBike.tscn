@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/motorcycle/Material_003.material" type="Material" id=1]
 [ext_resource path="res://assets/motorcycle/Material.material" type="Material" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/motorcycle/PhysicsVRSteeringCurve.tres" type="Curve" id=9]
 [ext_resource path="res://assets/motorcycle/motorcyclesounds/idle.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/motorcycle/motorcyclesounds/engine.mp3" type="AudioStream" id=11]
+[ext_resource path="res://fonts/Tytoon Mist.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="BoxShape" id=13]
 extents = Vector3( 3, 1, 1 )
@@ -109,12 +110,20 @@ extents = Vector3( 0.05, 0.05, 0.05 )
 [sub_resource type="CubeMesh" id=10]
 size = Vector3( 0.1, 0.1, 0.1 )
 
+[sub_resource type="SpatialMaterial" id=14]
+flags_transparent = true
+albedo_color = Color( 0.811765, 0.0235294, 0.0235294, 0.580392 )
+
 [sub_resource type="BoxShape" id=11]
 margin = 0.001
 extents = Vector3( 0.05, 0.05, 0.05 )
 
 [sub_resource type="CubeMesh" id=12]
 size = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="SpatialMaterial" id=15]
+flags_transparent = true
+albedo_color = Color( 0.811765, 0.0235294, 0.0235294, 0.580392 )
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "vehicle_GodotBike_Chasis"
@@ -194,6 +203,13 @@ surfaces/1 = {
 "vertex_count": 84
 }
 
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.2, 0.2, 0.2 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 256
+font_data = ExtResource( 12 )
+
 [node name="vehicle_GodotBike" type="VehicleBody"]
 mass = 40.8163
 axis_lock_angular_x = true
@@ -242,6 +258,24 @@ skeleton = NodePath("../../../../../BodyMesh")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33312, 0.0286722, 3.58462 )
 mesh = SubResource( 3 )
 
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle1" index="0"]
+collision_layer = 0
+
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle2" index="0"]
+collision_layer = 0
+
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle4" index="0"]
+collision_layer = 0
+
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle5" index="0"]
+collision_layer = 0
+
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle6" index="0"]
+collision_layer = 0
+
+[node name="InteractableHandle" parent="MotorCycleHandleBars/HingeOrigin/InteractableHinge/Handle8" index="0"]
+collision_layer = 0
+
 [node name="Info" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00889962, 1.13343, -0.477503 )
 pixel_size = 0.003
@@ -275,9 +309,10 @@ shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CarEnterArea"]
 mesh = SubResource( 10 )
+material/0 = SubResource( 14 )
 
 [node name="Label3D" type="Label3D" parent="CarEnterArea"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0603325, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00451355, 0, 0.007411 )
 pixel_size = 0.003
 text = "ENTER"
 
@@ -291,9 +326,10 @@ shape = SubResource( 11 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CarExitArea"]
 mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 
 [node name="Label3D" type="Label3D" parent="CarExitArea"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.0691549, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.0017907, 0 )
 pixel_size = 0.003
 text = "EXIT"
 
@@ -312,9 +348,24 @@ unit_db = 10.0
 unit_size = 50.0
 max_distance = 50.0
 
-[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+[node name="EngineAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = 24.0
+
+[node name="DetectionArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49541, -0.73196 )
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectionArea"]
+shape = SubResource( 16 )
+
+[node name="CarNumber" type="Label3D" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0625899, 0.570615, 0.193734 )
+pixel_size = 0.001
+modulate = Color( 0.356863, 0.352941, 0.352941, 1 )
+text = "3"
+font = SubResource( 17 )
 
 [connection signal="body_entered" from="EnemyKillZone" to="." method="_on_EnemyKillZone_body_entered"]
 [connection signal="body_entered" from="CarEnterArea" to="." method="_on_CarEnterArea_body_entered"]
