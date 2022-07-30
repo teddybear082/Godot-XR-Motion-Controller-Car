@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Track/crusty_stands.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/cars/caterham/car.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Audio/chime1.mp3" type="AudioStream" id=10]
 [ext_resource path="res://addons/countertimer/CounterTimer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://addons/countertimer/CounterTimer.gd" type="Script" id=12]
+[ext_resource path="res://Track/Building.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Track/DistantBuilding.material" type="Material" id=14]
+[ext_resource path="res://Track/BuildingFace.material" type="Material" id=15]
 
 [sub_resource type="GDScript" id=6]
 
@@ -38,8 +41,26 @@ script = ExtResource( 4 )
 [node name="Track_v2" parent="." instance=ExtResource( 7 )]
 
 [node name="Cylinder001" parent="Track_v2" index="1"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -28.6569, 15.3304, 0.738488 )
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, -28.6569, 23.1561, 0.738488 )
 script = SubResource( 6 )
+
+[node name="LapLabel5" parent="Track_v2/Cylinder001" index="6"]
+text = "LAP 5 00:00"
+
+[node name="LapLabel6" parent="Track_v2/Cylinder001" index="7"]
+text = "LAP 6 00:00"
+
+[node name="LapLabel7" parent="Track_v2/Cylinder001" index="8"]
+text = "LAP 7 00:00"
+
+[node name="LapLabel8" parent="Track_v2/Cylinder001" index="9"]
+text = "LAP 8 00:00"
+
+[node name="LapLabel9" parent="Track_v2/Cylinder001" index="10"]
+text = "LAP 9 00:00"
+
+[node name="LapLabel10" parent="Track_v2/Cylinder001" index="11"]
+text = "LAP 0 00:00"
 
 [node name="Walls" parent="Track_v2" index="2"]
 transform = Transform( 1.99, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79066, 0 )
@@ -98,199 +119,215 @@ transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -83.80
 [node name="Cube041" parent="Track_v2" index="45"]
 transform = Transform( -1, 0, 1.50996e-07, 0, 40, 0, -1.50996e-07, 0, -1, -90.5099, 6.049, -158.174 )
 
-[node name="EnvPlaceHolders" type="Spatial" parent="."]
+[node name="Environment" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315948, 2.09711, 1.36523 )
 
-[node name="crusty_stands" parent="EnvPlaceHolders" instance=ExtResource( 1 )]
+[node name="crusty_stands" parent="Environment" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9926, 0, 91.7822 )
 
-[node name="crusty_stands2" parent="EnvPlaceHolders" instance=ExtResource( 1 )]
+[node name="crusty_stands2" parent="Environment" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -88.0576, 0, -91.1275 )
 
-[node name="CSGBox" type="CSGBox" parent="EnvPlaceHolders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -480.286, 116.699, 532.864 )
-width = 90.0
-height = 250.0
-depth = 90.0
-
-[node name="CSGBox2" type="CSGBox" parent="EnvPlaceHolders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -295.871, 116.699, 767.192 )
-width = 90.0
-height = 250.0
-depth = 90.0
-
-[node name="CSGBox3" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox3" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132.394, 248.801, 767.192 )
 width = 90.0
 height = 533.223
 depth = 90.0
+material = ExtResource( 15 )
 
-[node name="CSGBox4" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox4" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2334.38, 116.699, 532.864 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox5" type="CSGBox" parent="EnvPlaceHolders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2149.97, 116.699, 767.192 )
+[node name="CSGBox5" type="CSGBox" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2415.23, 348.899, 767.192 )
 width = 90.0
-height = 250.0
+height = 797.135
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox6" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox6" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1986.49, 248.801, 767.192 )
 width = 90.0
 height = 533.223
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox7" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox7" type="CSGBox" parent="Environment"]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2334.38, 116.699, 1676.38 )
 width = 90.0
 height = 250.0
 depth = 90.0
 
-[node name="CSGBox8" type="CSGBox" parent="EnvPlaceHolders"]
-transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -2149.97, 116.699, 1910.71 )
+[node name="CSGBox8" type="CSGBox" parent="Environment"]
+transform = Transform( 0.965926, 0, -0.258819, 0, 2.66856, 0, 0.258819, 0, 0.965926, -2149.97, 458.089, 1910.71 )
 width = 90.0
-height = 250.0
+height = 394.619
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox9" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox9" type="CSGBox" parent="Environment"]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1986.49, 248.801, 1910.71 )
 width = 90.0
 height = 533.223
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox10" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox10" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2011.98, 116.699, 532.864 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox11" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox11" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1763.27, 116.699, 767.192 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox12" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox12" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2359.87, 248.801, 767.192 )
 width = 90.0
 height = 533.223
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox13" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox13" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 157.885, 116.699, 532.864 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 15 )
 
-[node name="CSGBox14" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox14" type="CSGBox" parent="Environment"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 342.3, 116.699, 767.192 )
 width = 90.0
 height = 250.0
 depth = 90.0
 
-[node name="CSGBox15" type="CSGBox" parent="EnvPlaceHolders"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 505.776, 248.801, 767.192 )
-width = 90.0
-height = 533.223
-depth = 90.0
-
-[node name="CSGBox19" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox19" type="CSGBox" parent="Environment"]
 transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 938.856, 116.699, 532.864 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 15 )
 
-[node name="CSGBox20" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox20" type="CSGBox" parent="Environment"]
 transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 1123.27, 116.699, 767.192 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox21" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox21" type="CSGBox" parent="Environment"]
 transform = Transform( 0.00136133, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00136133, 948.382, 380.138, 1122.94 )
 width = 90.0
 height = 853.011
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox16" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox16" type="CSGBox" parent="Environment"]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 157.885, 116.699, 1676.38 )
 width = 90.0
 height = 250.0
 depth = 90.0
 
-[node name="CSGBox17" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox17" type="CSGBox" parent="Environment"]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 342.3, 116.699, 1910.71 )
 width = 90.0
 height = 250.0
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="CSGBox18" type="CSGBox" parent="EnvPlaceHolders"]
+[node name="CSGBox18" type="CSGBox" parent="Environment"]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 505.776, 248.801, 1910.71 )
 width = 90.0
 height = 533.223
 depth = 90.0
+material = ExtResource( 14 )
 
-[node name="tree3" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree3" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 201.697, 0.43276, -145.621 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree3" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree3" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 2.24891, -2.38419e-07, -2.01307 )
 
-[node name="tree4" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree4" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 213.443, 0.43276, -157.717 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree4" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree4" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, -1.14052, 0, 0 )
 
-[node name="tree5" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree5" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 186.803, 0.43276, -157.717 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree5" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree5" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
-[node name="tree6" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree6" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 186.803, 0.43276, -185.61 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree6" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree6" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, -1.05356, 1.86265e-07, 1.53967 )
 
-[node name="tree7" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree7" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 196.803, 0.43276, -185.61 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree7" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree7" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
-[node name="tree8" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree8" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 196.803, 0.43276, -168.075 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree8" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree8" index="0"]
 transform = Transform( 0.445604, 0, 0, 0, -2.30197e-08, 0.369969, 0, -0.526629, -1.61719e-08, -0.909012, -4.09782e-08, -0.927324 )
 
-[node name="tree9" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree9" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 206.353, 0.43276, -168.075 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree9" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree9" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
-[node name="tree10" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree10" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 206.353, 0.43276, -194.075 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree10" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree10" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
-[node name="tree11" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree11" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 219.539, 0.43276, -194.075 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree11" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree11" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
 
-[node name="tree12" parent="EnvPlaceHolders" instance=ExtResource( 8 )]
+[node name="tree12" parent="Environment" instance=ExtResource( 8 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 219.539, 0.43276, -179.932 )
 
-[node name="_1_tree__1_tree_0" parent="EnvPlaceHolders/tree12" index="0"]
+[node name="_1_tree__1_tree_0" parent="Environment/tree12" index="0"]
 transform = Transform( 0.386568, 0, 0, 0, -4.60825e-08, 0.290115, 0, -0.386568, -3.45844e-08, 0, 0, 0 )
+
+[node name="Building" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 4, 0, 0, 0, 2, -656.443, 0, 527.429 )
+
+[node name="Building5" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 4, 0, 0, 0, 2, -386.419, 0, 654.675 )
+
+[node name="Building4" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 5.89454, 0, 0, 0, 2, -1060.93, 0, 949.803 )
+
+[node name="Building6" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 5.89454, 0, 0, 0, 2, -1908.6, 0, 949.803 )
+
+[node name="Building2" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 4, 0, 0, 0, 2, 692.211, 0, 723.547 )
+
+[node name="Building3" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 5.47768, 0, 0, 0, 2, 499.674, 0, 723.547 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986077, 0 )
@@ -473,16 +510,16 @@ script = ExtResource( 12 )
 [connection signal="area_entered" from="StartingLine" to="." method="_on_StartingLine_area_entered"]
 
 [editable path="Track_v2"]
-[editable path="EnvPlaceHolders/tree3"]
-[editable path="EnvPlaceHolders/tree4"]
-[editable path="EnvPlaceHolders/tree5"]
-[editable path="EnvPlaceHolders/tree6"]
-[editable path="EnvPlaceHolders/tree7"]
-[editable path="EnvPlaceHolders/tree8"]
-[editable path="EnvPlaceHolders/tree9"]
-[editable path="EnvPlaceHolders/tree10"]
-[editable path="EnvPlaceHolders/tree11"]
-[editable path="EnvPlaceHolders/tree12"]
+[editable path="Environment/tree3"]
+[editable path="Environment/tree4"]
+[editable path="Environment/tree5"]
+[editable path="Environment/tree6"]
+[editable path="Environment/tree7"]
+[editable path="Environment/tree8"]
+[editable path="Environment/tree9"]
+[editable path="Environment/tree10"]
+[editable path="Environment/tree11"]
+[editable path="Environment/tree12"]
 [editable path="Player"]
 [editable path="Player/LeftHandController/LeftPhysicsHand"]
 [editable path="Player/LeftHandController/LeftPhysicsHand/LeftHand"]

@@ -10,7 +10,7 @@ var original_transform_basis = null
 func _ready():
 	original_transform_basis = $Player.transform.basis
 
-
+var lapCount = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -133,7 +133,31 @@ func _on_StartingLine_area_entered(area):
 		$LapChime.play()
 		$CounterTimer.reset()
 		$CounterTimer.start()
-		
-func _process(delta):
-	$Track_v2/Cylinder001/Label3D.text = str($CounterTimer.counter_time)
+		lapCount += 1
+		if lapCount == 11:
+			lapCount = 1
+			
+func _update_lap_scores():
+	if lapCount == 1:
+		$Track_v2/Cylinder001/LapLabel1.text = str($CounterTimer.counter_time)
+	if lapCount == 2:
+		$Track_v2/Cylinder001/LapLabel2.text = str($CounterTimer.counter_time)
+	if lapCount == 3:
+		$Track_v2/Cylinder001/LapLabel3.text = str($CounterTimer.counter_time)
+	if lapCount == 4:
+		$Track_v2/Cylinder001/LapLabel4.text = str($CounterTimer.counter_time)
+	if lapCount == 5:
+		$Track_v2/Cylinder001/LapLabel5.text = str($CounterTimer.counter_time)
+	if lapCount == 6:
+		$Track_v2/Cylinder001/LapLabel6.text = str($CounterTimer.counter_time)
+	if lapCount == 7:
+		$Track_v2/Cylinder001/LapLabel7.text = str($CounterTimer.counter_time)
+	if lapCount == 8:
+		$Track_v2/Cylinder001/LapLabel8.text = str($CounterTimer.counter_time)
+	if lapCount == 9:
+		$Track_v2/Cylinder001/LapLabel9.text = str($CounterTimer.counter_time)
+	if lapCount == 10:
+		$Track_v2/Cylinder001/LapLabel10.text = str($CounterTimer.counter_time)	
 	
+func _process(delta):
+	_update_lap_scores()
