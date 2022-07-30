@@ -59,9 +59,6 @@ script = ExtResource( 4 )
 transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, -28.6569, 23.1561, 0.738488 )
 script = SubResource( 6 )
 
-[node name="LapLabel1" parent="Track_v2/Cylinder001" index="2"]
-modulate = Color( 1, 0.866667, 0, 1 )
-
 [node name="Walls" parent="Track_v2" index="2"]
 transform = Transform( 1.99, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79066, 0 )
 

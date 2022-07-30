@@ -357,8 +357,15 @@ func get_throttle_input():
 	if player_is_seated == false:
 		return 0
 	if player_is_seated == true:
-		if _gas_controller.is_button_pressed(gas_button_id):
+		#Use for using throttle button instead of motion controller throttle
+		#if _gas_controller.is_button_pressed(gas_button_id):
+		#	return -1
+		
+		#Use for motion controller based throttle - rotate controller backward to activate throttle
+		if -_gas_controller.global_transform.basis.z.y > .5:
 			return -1
+		if -_gas_controller.global_transform.basis.z.y > .1:
+			return _gas_controller.global_transform.basis.z.y
 		else:
 			return 0
 

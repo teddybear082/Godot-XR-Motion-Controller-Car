@@ -216,6 +216,9 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource( 6 )
 steer_curve = ExtResource( 9 )
+shift_up_button_id = 1
+shift_up_controller = 0
+brake_controller = 1
 power_curve = ExtResource( 8 )
 
 [node name="FVehicleWheel" type="VehicleWheel" parent="."]
