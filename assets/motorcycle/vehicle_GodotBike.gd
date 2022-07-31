@@ -376,11 +376,11 @@ func get_throttle_input():
 			return 0
 			
 			#avoid having to use uncomfortable hand positions by setting a certain position to give max throttle
-		if -_gas_controller.global_transform.basis.z.y > .5:
-			return -1
+		if _gas_controller.global_transform.basis.z.y < -.5:
+			return 1
 			
 			#if not at max throttle position, use analog functionality to adjust throttle based on hand position
-		if -_gas_controller.global_transform.basis.z.y > .1:
+		if _gas_controller.global_transform.basis.z.y > -.1:
 			return _gas_controller.global_transform.basis.z.y
 		else:
 			return 0
@@ -421,7 +421,7 @@ func get_lean_input():
 		var angle = rad2deg(acos(dot))
 #		print(str(angle))
 		#Subtract angle from 90 to see how much we should move the bike from its upright position
-		return 90.0-angle
+		return angle-90
 	
 #Used if there are NPCs to avoid odd physics interactions; assumes NPCs are in group called "enemies"
 func _on_EnemyKillZone_body_entered(body):

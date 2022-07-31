@@ -223,35 +223,35 @@ max_engine_rpm = 4500.0
 power_curve = ExtResource( 8 )
 
 [node name="FVehicleWheel" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.62 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37, 0.6 )
 use_as_steering = true
-wheel_radius = 0.3
-wheel_rest_length = 0.2
+wheel_radius = 0.32
+wheel_rest_length = 0.05
 wheel_friction_slip = 15.0
-suspension_travel = 0.2
-suspension_stiffness = 70.0
-suspension_max_force = 200.0
-damping_compression = 0.9
-damping_relaxation = 0.97
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 400.0
+damping_compression = 1.8
+damping_relaxation = 1.9
 
 [node name="RVehicleWheel" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37, -0.6 )
 use_as_traction = true
-wheel_radius = 0.3
-wheel_rest_length = 0.2
+wheel_radius = 0.32
+wheel_rest_length = 0.05
 wheel_friction_slip = 15.0
-suspension_travel = 0.2
-suspension_stiffness = 70.0
-suspension_max_force = 200.0
-damping_compression = 0.9
-damping_relaxation = 0.97
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 400.0
+damping_compression = 1.8
+damping_relaxation = 1.9
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -0.0028553, 0.19998, -8.74137e-09, -3.747e-16, -8.74229e-09, -0.2, -0.19998, -0.0028553, 1.2481e-10, -0.00984291, 0.64942, -0.00808636 )
+transform = Transform( -0.0028553, 0.19998, -8.74137e-09, -3.747e-16, -8.74229e-09, -0.2, -0.19998, -0.0028553, 1.2481e-10, -0.01, 0.631, -0.008 )
 shape = SubResource( 13 )
 
 [node name="MotorCycleHandleBars" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00655082, 0.962855, -0.231107 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, -0.00378346, 1.03109, 0.233674 )
 
 [node name="InteractableHinge" parent="MotorCycleHandleBars/HingeOrigin" index="0"]
 hinge_limit_min = -90.0
@@ -285,22 +285,22 @@ collision_layer = 0
 collision_layer = 0
 
 [node name="Info" type="Label3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00889962, 1.13343, -0.477503 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.013189, 1.20166, 0.47997 )
 pixel_size = 0.003
 text = "Test"
 
 [node name="PlayerCameraPosition" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.063 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.000950098, 1.26823, -0.0604677 )
 layers = 524288
 mesh = SubResource( 6 )
 
 [node name="ExitPlayerCamera" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668, 1.7, 0 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, -0.666648, 1.76823, 0.00665835 )
 layers = 524288
 mesh = SubResource( 7 )
 
 [node name="EnemyKillZone" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800741, 0 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.00133935, 0.868979, 0.00253111 )
 collision_layer = 5
 collision_mask = 5
 
@@ -308,7 +308,7 @@ collision_mask = 5
 shape = SubResource( 8 )
 
 [node name="CarEnterArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.194435, 0.804189, 0.398699 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.193307, 0.872427, -0.397362 )
 collision_layer = 393216
 collision_mask = 393216
 
@@ -325,7 +325,7 @@ pixel_size = 0.003
 text = "ENTER"
 
 [node name="CarExitArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.592585, 0.957189, -0.246321 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, -0.589713, 1.02543, 0.252509 )
 collision_layer = 393216
 collision_mask = 393216
 
@@ -342,7 +342,7 @@ pixel_size = 0.003
 text = "EXIT"
 
 [node name="BodyMesh" type="MeshInstance" parent="."]
-transform = Transform( -8.74229e-09, 0.2, -8.74228e-09, 0, -8.74229e-09, -0.2, -0.2, -8.74229e-09, 3.82137e-16, -0.00984291, -0.010336, -0.0180737 )
+transform = Transform( 0.00123571, -0.199996, 8.74211e-09, 0, -8.74229e-09, -0.2, 0.199996, 0.00123571, -5.40145e-11, 0.0112937, 0.0579017, 0.0205437 )
 mesh = SubResource( 1 )
 
 [node name="RearWheelMesh" type="MeshInstance" parent="BodyMesh"]
@@ -350,7 +350,7 @@ transform = Transform( 1, 0, 4.23516e-22, 0, 1, -2.4869e-14, 0, -8.3519e-23, 1, 
 mesh = SubResource( 4 )
 
 [node name="IdleSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.469865, 0.200121 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.000102907, 0.538103, -0.197586 )
 stream = ExtResource( 10 )
 unit_db = 10.0
 unit_size = 50.0
@@ -361,7 +361,7 @@ stream = ExtResource( 11 )
 volume_db = 24.0
 
 [node name="DetectionArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49541, -0.73196 )
+transform = Transform( -0.999981, 0, -0.00617849, 0, 1, 0, 0.00617849, 0, -0.999981, 0.00586176, 0.563648, 0.734477 )
 collision_layer = 512
 collision_mask = 1024
 
@@ -369,7 +369,7 @@ collision_mask = 1024
 shape = SubResource( 16 )
 
 [node name="CarNumber" type="Label3D" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0625899, 0.570615, 0.193734 )
+transform = Transform( -0.00617845, 0, 0.999981, 0, 1, 0, -0.999981, 0, -0.00617845, 0.0627311, 0.638853, -0.191586 )
 pixel_size = 0.001
 modulate = Color( 0.356863, 0.352941, 0.352941, 1 )
 text = "3"
