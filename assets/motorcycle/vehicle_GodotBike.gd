@@ -318,7 +318,9 @@ func get_shift_down():
 	if player_is_seated == false:
 		return false
 	if player_is_seated == true:
-		
+		#Make sure player is holding handlebars, if not, don't let shifting occur:
+		if _shift_down_controller.get_node("Function_Pickup").picked_up_object == null:
+			return false
 	# Detect press of shift down button
 		var old_shift_down_button = _shift_down_button
 		_shift_down_button = _shift_down_controller.is_button_pressed(shift_down_button_id)
@@ -335,7 +337,9 @@ func get_shift_up():
 	if player_is_seated == false:
 		return false
 	if player_is_seated == true:
-
+		#Make sure player is holding handlebars, if not, don't let shifting occur:
+		if _shift_up_controller.get_node("Function_Pickup").picked_up_object == null:
+			return false
 		# Detect press of shift up button
 		var old_shift_up_button = _shift_up_button
 		_shift_up_button = _shift_up_controller.is_button_pressed(shift_up_button_id)
@@ -390,6 +394,10 @@ func get_brake_input():
 	if player_is_seated == false:
 		return 0
 	if player_is_seated == true:
+		#Make sure player is holding handlebars, if not, don't let braking occur:
+		if _brake_controller.get_node("Function_Pickup").picked_up_object == null:
+			return 0
+			
 		if _brake_controller.is_button_pressed(brake_button_id):
 			return 1
 		else:
@@ -402,6 +410,9 @@ func get_lean_input():
 		return 0
 	if player_is_seated == true:
 		
+		#make sure both hands are grabbed, if not, skip lean movement:
+		if _left_controller.get_node("Function_Pickup").picked_up_object == null or _right_controller.get_node("Function_Pickup").picked_up_object == null:
+			return 0
 		#Old methods tried and not great
 #		return $Player/ARVRCamera.rotation.z
 #		return $Player/ARVRCamera.transform.basis.z - $Player/ARVRCamera.global_transform.basis.z
@@ -414,6 +425,8 @@ func get_lean_input():
 		#Bastiaan's idea - works way better (of course)
 			#Get difference in hand positions
 		var hand_delta = (_right_controller.transform.origin - _left_controller.transform.origin).normalized()
+		print(str(hand_delta))
+		
 			#Get their difference from camera view
 		var hand_delta_view = $Player/ARVRCamera.transform.basis.xform_inv(hand_delta)
 		var dot = hand_delta_view.dot(Vector3(0.0,1.0,0.0))
@@ -422,7 +435,7 @@ func get_lean_input():
 #		print(str(angle))
 		#Subtract angle from 90 to see how much we should move the bike from its upright position
 		return angle-90
-	
+		#return 90-angle
 #Used if there are NPCs to avoid odd physics interactions; assumes NPCs are in group called "enemies"
 func _on_EnemyKillZone_body_entered(body):
 	
