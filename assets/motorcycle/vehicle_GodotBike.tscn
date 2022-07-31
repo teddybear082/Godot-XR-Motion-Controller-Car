@@ -14,7 +14,7 @@
 [ext_resource path="res://fonts/Tytoon Mist.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="BoxShape" id=13]
-extents = Vector3( 3, 1, 1 )
+extents = Vector3( 3, 0.4, 1 )
 
 [sub_resource type="ArrayMesh" id=2]
 resource_name = "vehicle_GodotBike_frontchasis"
@@ -242,7 +242,7 @@ damping_compression = 0.9
 damping_relaxation = 0.97
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -0.0028553, 0.19998, -8.74137e-09, -3.747e-16, -8.74229e-09, -0.2, -0.19998, -0.0028553, 1.2481e-10, -0.00984291, 0.563473, 0.0742188 )
+transform = Transform( -0.0028553, 0.19998, -8.74137e-09, -3.747e-16, -8.74229e-09, -0.2, -0.19998, -0.0028553, 1.2481e-10, -0.00984291, 0.64942, -0.00808636 )
 shape = SubResource( 13 )
 
 [node name="MotorCycleHandleBars" parent="." instance=ExtResource( 7 )]

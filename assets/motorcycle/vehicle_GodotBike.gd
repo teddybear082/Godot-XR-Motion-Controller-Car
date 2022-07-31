@@ -1,5 +1,7 @@
 extends VehicleBody
-
+##Motorcycle script created by using vehicle  tutorial by Bastiaan Olij here: https://www.youtube.com/watch?v=B5vE-nNszxA&t=903s; 
+#https://github.com/BastiaanOlij/vehicle-demo
+#And then assisted by him personally on discord.  However, if there is anything you don't like it's my fault not his, this is not his personal project like the car is.
 
 ############################################################
 #Vehicle number for customization or tracking multiple cars
@@ -246,12 +248,17 @@ func _integrate_forces(state):
 		if steer_lean == true:
 			lean_val = get_lean_input()
 			
-			#Prevent divide by zero errors
+			#Prevent divide by zero errors to create default
 			if LEAN_SPEED_DIVISOR == 0:
-				LEAN_SPEED_DIVISOR = 60
+				LEAN_SPEED_DIVISOR = speed
 			#Rotate bike by lean, but exaggerate lean angle the faster that the bike goes. LEAN SPEED DIVISOR is an export variable for easy tweaking
-			rotation.z = lean_val*(speed/LEAN_SPEED_DIVISOR)
-
+				#old code before Bastiaan's tweak
+			#rotation.z = lean_val*(speed/LEAN_SPEED_DIVISOR)
+				#new code based on Bastiaan's suggested revision to lean calculations, comment out *(speed/LEAN_SPEED_DIVISOR) to turn off dynamic leaning
+			rotation_degrees.z = lean_val * (speed/LEAN_SPEED_DIVISOR)
+			
+		elif steer_lean == false:
+			rotation_degrees.z = 0	
 #Handle physics engine calculations			
 func _physics_process(delta):
 	# how fast are we going in meters per second?
@@ -362,8 +369,17 @@ func get_throttle_input():
 		#	return -1
 		
 		#Use for motion controller based throttle - rotate controller backward to activate throttle
+			#make sure player is actually holding the wheel with the gas controller hand before enabling throttle
+			#to make this more precise you could check that the picked up object is one of your wheel objects but using
+			#a general function pickup check so as not to be so dependent on node naming for this demo
+		if _gas_controller.get_node("Function_Pickup").picked_up_object == null:
+			return 0
+			
+			#avoid having to use uncomfortable hand positions by setting a certain position to give max throttle
 		if -_gas_controller.global_transform.basis.z.y > .5:
 			return -1
+			
+			#if not at max throttle position, use analog functionality to adjust throttle based on hand position
 		if -_gas_controller.global_transform.basis.z.y > .1:
 			return _gas_controller.global_transform.basis.z.y
 		else:
@@ -385,11 +401,27 @@ func get_lean_input():
 	if player_is_seated == false:
 		return 0
 	if player_is_seated == true:
+		
+		#Old methods tried and not great
 #		return $Player/ARVRCamera.rotation.z
 #		return $Player/ARVRCamera.transform.basis.z - $Player/ARVRCamera.global_transform.basis.z
 #		return $Player/ARVRCamera.transform.basis.z - $Player.transform.basis.z
 #		return $Player/ARVRCamera.transform.basis.z - $Player.global_transform.basis.z
-		return $Player/ARVRCamera.rotation.z - $Player.rotation.z
+
+		#First somewhat working method
+#		return $Player/ARVRCamera.rotation.z - $Player.rotation.z
+
+		#Bastiaan's idea - works way better (of course)
+			#Get difference in hand positions
+		var hand_delta = (_right_controller.transform.origin - _left_controller.transform.origin).normalized()
+			#Get their difference from camera view
+		var hand_delta_view = $Player/ARVRCamera.transform.basis.xform_inv(hand_delta)
+		var dot = hand_delta_view.dot(Vector3(0.0,1.0,0.0))
+			#final angle of the difference, return in degrees to make more human-readable
+		var angle = rad2deg(acos(dot))
+#		print(str(angle))
+		#Subtract angle from 90 to see how much we should move the bike from its upright position
+		return 90.0-angle
 	
 #Used if there are NPCs to avoid odd physics interactions; assumes NPCs are in group called "enemies"
 func _on_EnemyKillZone_body_entered(body):
