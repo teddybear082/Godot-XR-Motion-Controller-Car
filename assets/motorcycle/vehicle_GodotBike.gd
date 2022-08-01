@@ -386,7 +386,7 @@ func get_throttle_input():
 			return 1
 			
 			#if not at max throttle position, use analog functionality to adjust throttle based on hand position
-		if _gas_controller.global_transform.basis.z.y > -.1:
+		if _gas_controller.global_transform.basis.z.y <= -.1:
 			return _gas_controller.global_transform.basis.z.y
 		else:
 			return 0
