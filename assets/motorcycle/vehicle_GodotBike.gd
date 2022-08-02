@@ -40,8 +40,8 @@ var steer_lean = false
 var lean_val = 0
 var speed = 0
 var rpm = 0
-signal bike_entered(bike_node)
-signal bike_exited(bike_node)
+signal VR_vehicle_entered(vehicle_node)
+signal VR_vehicle_exited(vehicle_node)
 
 var _shift_up_controller: ARVRController
 var _shift_down_controller: ARVRController
@@ -440,7 +440,7 @@ func get_lean_input():
 		var dot = hand_delta_view.dot(Vector3(0.0,1.0,0.0))
 			#final angle of the difference, return in degrees to make more human-readable
 		var angle = rad2deg(acos(dot))
-#		print(str(angle))
+#		
 		#Subtract 90 from angle to see how much we should move the bike from its upright position
 		return angle-90
 		
@@ -455,10 +455,10 @@ func _on_EnemyKillZone_body_entered(body):
 func _on_CarExitArea_body_entered(body):
 	if body.is_in_group("right_hand") or body.is_in_group("left_hand"):
 		player_is_seated = false
-		emit_signal("bike_exited", self)
+		emit_signal("VR_vehicle_exited", self)
 
 
 func _on_CarEnterArea_body_entered(body):
 	if body.is_in_group("right_hand") or body.is_in_group("left_hand"):
 		player_is_seated = true
-		emit_signal("bike_entered", self)
+		emit_signal("VR_vehicle_entered", self)

@@ -24,8 +24,8 @@ var steer_angle = 0.0
 var player_is_seated = false
 var was_gear_up = false
 var was_gear_down = false
-signal car_entered(car_node)
-signal car_exited(car_node)
+signal VR_vehicle_entered(vehicle_node)
+signal VR_vehicle_exited(vehicle_node)
 
 var _shift_up_controller: ARVRController
 var _shift_down_controller: ARVRController
@@ -219,7 +219,7 @@ func get_shift_down():
 		_shift_down_button = _shift_down_controller.is_button_pressed(shift_down_button_id)
 		if _shift_down_button and !old_shift_down_button:
 
-#		if left_button_pressed($Player/LeftHandController, 7):
+#		
 			if !was_gear_down:
 				was_gear_down = true
 				return true
@@ -231,7 +231,7 @@ func get_shift_up():
 	if player_is_seated == false:
 		return false
 	if player_is_seated == true:
-#		if right_button_pressed($Player/RightHandController, 7):
+#		
 		# Detect press of shift up button
 		var old_shift_up_button = _shift_up_button
 		_shift_up_button = _shift_up_controller.is_button_pressed(shift_up_button_id)
@@ -277,8 +277,8 @@ func _on_CarEnterArea_body_entered(body):
 		player_is_seated = true
 		$EngineAudio.play()
 		$CarDoorAudio.play()
-		emit_signal("car_entered", self)
-		# Replace with function body.
+		emit_signal("VR_vehicle_entered", self)
+		
 
 
 func _on_CarExitArea_body_entered(body):
@@ -286,31 +286,11 @@ func _on_CarExitArea_body_entered(body):
 		player_is_seated = false
 		$EngineAudio.stop()
 		$CarDoorAudio.play()
-		emit_signal("car_exited", self)
+		emit_signal("VR_vehicle_exited", self)
 		 
-
-
-#func left_button_pressed(controller, b):
-#	if controller.is_button_pressed(b) and !left_controller_button_states.has(b):
-#		left_controller_button_states.append(b)
-#		return true
-#	if not controller.is_button_pressed(b) and left_controller_button_states.has(b):
-#		left_controller_button_states.erase(b)
-#	
-#	return false	
-	
-#func right_button_pressed(controller, b):
-#	if controller.is_button_pressed(b) and !right_controller_button_states.has(b):
-#		right_controller_button_states.append(b)
-#		return true
-#	if not controller.is_button_pressed(b) and right_controller_button_states.has(b):
-#		right_controller_button_states.erase(b)
-#	
-#	return false	
-
 
 func _on_EnemyKillZone_body_entered(body):
 	pass
 #		if body.is_in_group("enemies"):
 #			body.enemy_alive = false
-#			body.queue_free()# Replace with function body.
+#			body.queue_free()
