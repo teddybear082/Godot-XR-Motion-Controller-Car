@@ -8,9 +8,17 @@ var proper_start = false
 var proper_direction = false
 var lapCount = 0
 
-#func _ready():
-#	pass
-
+func _ready():
+	
+	#handle haptics  - connect to each controller's pickup function and then connect it to haptic pulse function
+	$Player/LeftHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse")
+	$Player/RightHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse")
+	
+func haptic_pulse(what):
+	#What is passed as a parameter by the has_picked_up signal and is the object pickable, in turn that has a _by_controller property that yield the picked up controller
+	what.by_controller.set_rumble(0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
+	what.by_controller.set_rumble(0.0)
 
 func _on_StartingLine_area_entered(area):
 	if proper_start == true and proper_direction == true:

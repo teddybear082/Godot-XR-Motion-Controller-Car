@@ -12,18 +12,22 @@ export (NodePath) var arvrorigin_path = null
 
 var arvrorigin = null
 var arvrorigin_name = null
-var _right_controller
+
 
 #Variables to keep track of when player enters or exits any vehicle
 var vehicle_already_entered = false
 var vehicle_already_exited = false
 
 #List variable of tracked VR Vehicles
-var vehicle_children = []
-var vehicle_group = []
+#var vehicle_children = []
+#var vehicle_group = []
 
 #Variable to keep track of player's original transform in order to properly reset after exiting vehicle
 var original_transform_basis = null
+
+#signals to alert other scene nodes when player in vehicle as necessary
+signal player_in_vehicle(player_node, vehicle_node)
+signal player_left_vehicle(player_node, vehicle_node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,6 +88,7 @@ func _on_vehicle_entered(vehicle_node):
 		arvrorigin.global_transform = seatcamera.global_transform
 		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,false)
 		vehicle_already_exited = false
+		emit_signal("player_in_vehicle", arvrorigin, vehicle_node)
 
 
 func _on_vehicle_exited(vehicle_node):
@@ -100,3 +105,4 @@ func _on_vehicle_exited(vehicle_node):
 		ARVRServer.center_on_hmd(ARVRServer.RESET_BUT_KEEP_TILT,true)
 		enable_player_controls(true)
 		vehicle_already_entered = false
+		emit_signal("player_left_vehicle", arvrorigin, vehicle_node)
