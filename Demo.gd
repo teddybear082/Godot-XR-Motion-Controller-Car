@@ -11,10 +11,10 @@ var lapCount = 0
 func _ready():
 	
 	#handle haptics  - connect to each controller's pickup function and then connect it to haptic pulse function
-	$Player/LeftHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse")
-	$Player/RightHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse")
+	$Player/LeftHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse_on_pickup")
+	$Player/RightHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse_on_pickup")
 	
-func haptic_pulse(what):
+func haptic_pulse_on_pickup(what):
 	#What is passed as a parameter by the has_picked_up signal and is the object pickable, in turn that has a _by_controller property that yield the picked up controller
 	what.by_controller.set_rumble(0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -68,3 +68,11 @@ func _on_StartingBlock_area_exited(area):
 			$StartingBlock/StartingBlockMesh.visible = false
 		if $StartingBlock/StartingLabel3D.visible == true:
 			$StartingBlock/StartingLabel3D.visible = false
+
+
+func _on_VRVehicleManager_player_in_vehicle(player_node, vehicle_node):
+	pass# Replace with function body.
+
+
+func _on_VRVehicleManager_player_left_vehicle(player_node, vehicle_node):
+	pass # Replace with function body.

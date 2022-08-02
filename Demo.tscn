@@ -563,6 +563,8 @@ r_controller_path = NodePath("../../Player/RightHandController")
 
 [connection signal="area_entered" from="StartingLine" to="." method="_on_StartingLine_area_entered"]
 [connection signal="area_exited" from="StartingBlock" to="." method="_on_StartingBlock_area_exited"]
+[connection signal="player_in_vehicle" from="VRVehicleManager" to="." method="_on_VRVehicleManager_player_in_vehicle"]
+[connection signal="player_left_vehicle" from="VRVehicleManager" to="." method="_on_VRVehicleManager_player_left_vehicle"]
 
 [editable path="Track_v2"]
 [editable path="Environment/tree3"]
