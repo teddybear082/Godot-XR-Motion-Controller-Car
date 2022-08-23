@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ScoreSignIn.gd" type="Script" id=1]
+
+[node name="ScoreSignIn" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 320.0
+margin_bottom = 192.0
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 34.0
+margin_top = 16.0
+margin_right = 149.0
+margin_bottom = 56.0
+text = "High Score Sign In"
+
+[node name="TextEdit" type="TextEdit" parent="Panel"]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 312.0
+margin_bottom = 80.0
+
+[node name="Submit" type="Button" parent="Panel"]
+margin_left = 192.0
+margin_top = 8.0
+margin_right = 272.0
+margin_bottom = 32.0
+text = "Submit Name"
+
+[connection signal="pressed" from="Panel/Submit" to="." method="_on_Submit_pressed"]

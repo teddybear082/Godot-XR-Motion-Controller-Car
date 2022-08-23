@@ -14,6 +14,13 @@ func _ready():
 	$Player/LeftHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse_on_pickup")
 	$Player/RightHandController/Function_Pickup.connect("has_picked_up", self, "haptic_pulse_on_pickup")
 	
+	SilentWolf.configure({
+			  "api_key": "VIDPkHWCKq7aJsvYQ5FcN3K0Z677PtO4Tn9bJ2m3",
+			  "game_id": "GodotXRMoCoDemo",
+			  "game_version": "1.0.2",
+			  "log_level": 0
+			})
+
 func haptic_pulse_on_pickup(what):
 	#What is passed as a parameter by the has_picked_up signal and is the object pickable, in turn that has a _by_controller property that yield the picked up controller
 	what.by_controller.set_rumble(0.2)
@@ -25,6 +32,14 @@ func _on_StartingLine_area_entered(area):
 		if area.collision_layer == 512:
 		#used for distinguishing between cars at some point, not currently used
 			var car_number = area.get_parent().car_number
+			
+			var ldboard_name = "main"
+			var metadata = {
+				"LAP ": $CounterTimer.counter_time
+			}
+			
+			if lapCount >= 1:
+				SilentWolf.Scores.persist_score(Global.playerName, $CounterTimer.seconds, ldboard_name, metadata)
 			
 			$LapChime.play()
 			$CounterTimer.reset()
